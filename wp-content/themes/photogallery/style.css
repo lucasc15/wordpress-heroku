@@ -1,0 +1,116 @@
+/*
+ Theme Name:     Photo Gallery
+ Theme URL:      http://www.nowebsite.com
+ Description:    TwentyTwelve Child Theme
+ Author:         Lucas Currah
+ Author URI:     https://lucas15.github.io
+ Template:       twentytwelve
+ Version:        1.0.0
+*/
+
+@import url("../twentytwelve/style.css");
+
+html, body {
+    width: 100%;
+    margin: 0 .5% 0 .1%;
+    height: 100%;
+    
+}
+.site, .hfeed{
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+#page{
+    width: 100%;
+    padding: 0;
+    border: 3px solid #262228;
+    max-width: 100%;
+    height: 100%;
+}
+
+header{
+    width: 100%;
+    padding: 10px 10px;
+}
+
+#main{
+    width: 100%;
+    padding: 10px 10px;
+    margin-bottom: 5%;
+    height: 100%;
+    background-color: #999;
+}
+
+#colophon, .push{
+    height: 5%;
+    border-top: 3px solid #262228;
+}
+
+h1, h2{
+    margin 0 10px;
+    color: #FFCE00;
+    font-size: 200%;
+}
+
+h1.site-title a {
+    color: #FFCE00;
+    font-size: 200%;
+    margin: 0 2%;
+}
+
+h2.site-description {
+    color: #FFCE00;
+    font-size: 150%;
+    margin: 0 2%;
+    padding: 0;
+}
+
+.site-header{
+    background-color: #0375B4;
+    width: 100%;
+    padding: 0;
+    
+}
+
+.main-navigation{
+    border-top: 3px solid #262228;
+    border-bottom: 3px solid #262228;
+    float: bottom;
+}
+
+.nav-menu ul{
+    background-color: #007849; 
+    margin: auto;
+}
+
+.main-navigation .current-menu-item > a,
+.main-navigation .current-menu-ancestor > a,
+.main-navigation .current_page_item > a,
+.main-navigation .current_page_ancestor > a,
+.nav-menu ul li a{
+    color: white;
+    font-weight: bold;
+}
+
+.nav-menu ul li {
+    margin: 0 2%;
+}
+
+.row{
+    height: 33%;
+    width: 100%;
+    vertical-align: middle;
+    text-align: center;
+}
+
+.col{
+    float:left;
+    width: 33%;
+    height: 100%;
+    vertical-align: middle;
+    display: table-cell;
+    text-align: center;
+}

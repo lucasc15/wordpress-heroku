@@ -15,28 +15,62 @@ $uploader = new \Cloudinary\Uploader();
     "api_key" => "954541261474557",
     "api_secret" => "t4kXVm784U1zaYOq8Cbyycoq75g"
 ));
+$MEDIA_FOLDER = 'wp-media/';
 
 $table_tags = $wpdb->prefix."tags";
 $table_pictures = $wpdb->prefix."pictures";
 $table_picturetag = $wpdb->prefix."picturetag";
 
-function refresh_cloudinary_urls($folder_name) {
-    global $api;
+function refresh_cloudinary_urls() {
+    global $api, $MEDIA_FOLDER;
     global $wpdb;
-    $result = $api->resources($folder_name);
+    $result = $api->resources(
+        array("type" => "upload", "prefix" => $MEDIA_FOLDER));
     $urls = array();
     foreach($result['resources'] as $arr){
         array_push($urls, $arr['url']);
     }
-    /* var_dump($urls); */
     $table_name = $wpdb->prefix."pictures";
     foreach($urls as $url){
-        $sql = "INSERT INTO $table_name (p_url) SELECT '$url' 
+        $tmp = end(explode('/', $url));
+        $sql = "INSERT INTO $table_name (p_url, p_name) SELECT '$url', '$tmp' 
                 WHERE NOT EXISTS (SELECT 1 FROM $table_name 
-                WHERE p_url='$url');";
-        $wpdb->query( $wpdb->prepare($sql, null) );
+                WHERE p_name='$tmp');";
+        $wpdb->query($sql);
     }
-    return; /* $urls; */
+    remove_deleted_images();
+    delete_duplicate_p_urls();
+    return;
+}
+
+function remove_deleted_images(){
+    global $wpdb;
+    $p_urls = get_all_images();
+    foreach ($p_urls as $p_url){
+        $headers = get_headers($p_url->p_url);
+        if (strpos($headers[0], 'OK') == False){
+            delete_image($p_url->p_url);
+        }
+    }
+}
+
+function delete_duplicate_p_urls(){
+    global $wpdb, $table_pictures, $table_picturetag;
+    $sql = "DELETE FROM $table_picturetag WHERE picture_id NOT IN
+            (SELECT MIN(id) FROM $table_pictures GROUP BY p_name)";
+    $wpdb->query($sql);
+    $sql = "DELETE FROM $table_pictures WHERE id NOT IN
+            (SELECT MIN(id) FROM $table_pictures GROUP BY p_name)";
+    $wpdb->query($sql);
+    return;
+}
+
+function delete_image($p_url){
+    global $wpdb, $table_pictures, $table_picturetag;
+    $sql = "DELETE FROM $table_picturetag pt 
+                    INNER JOIN $table_pictures p ON pt.picture_id = p.id WHERE p.url = $p_url";
+    $wpdb->query($sql);
+    $wpdb->query("DELETE FROM $table_pictures WHERE p_url = $p_url");
 }
 
 function get_image_tags($url) {
@@ -134,28 +168,31 @@ function search_tags($tags){
 function make_collage($p_urls){
     echo '<div class="collage-wrapper">';
     foreach($p_urls as $p_url){
+        echo '<div>';
         echo '<img src="'.$p_url->p_url.'"/>';
+        echo '</div>';
     }
     echo '</div>';
 }
 
 function upload_image() {
-    global $uploader;
+    global $uploader, $MEDIA_FOLDER;
     global $POST;
     $zip = new ZipArchive();
     if(getimagesize($_FILES["uploadFile"]["tmp_name"])){
-        \Cloudinary\Uploader::upload($_FILES["uploadFile"]["tmp_name"]);
+        \Cloudinary\Uploader::upload($_FILES["uploadFile"]["tmp_name"], array("folder" => $MEDIA_FOLDER));
     } elseif (is_resource($zip->open($_FILES["uploadFile"]["tmp_name"]))){
         for ($u = 0; $i < $zip->numFiles; $i++){
             $fp = $zip->GetStream($zip->getNameIndex($i));
             if ($fp){
                 $contents=fread($fp, 8192);
                 if(getimagesize($contents)){
-                    $uploader::upload($contents);
+                    $uploader::upload($contents, array("folder" => $MEDIA_FOLDER));
                 }
             }
         }
     }
     wp_redirect(admin_url('admin.php?page=collage-maker'));
 }
-/* get_cloudinary_urls("upload"); */
+
+

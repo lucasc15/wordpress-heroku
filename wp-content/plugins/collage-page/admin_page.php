@@ -5,7 +5,7 @@ function admin_page_handler() {
 }
 
 function populate_admin_page() {
-    $urls = refresh_cloudinary_urls("upload");
+    $urls = refresh_cloudinary_urls("wp-media");
     echo "<h1>Collage Admin Page</h1>";
     echo '<form method="POST" action="http://localhost:8000/wp-admin/admin-post.php" enctype="multipart/form-data">';
     echo '<input type="hidden" name="action" value="upload_image">';

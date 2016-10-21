@@ -1,30 +1,33 @@
 .collage-wrapper {
     line-height: 0;
-
     -webkit-column-count: 3;
     -webkit-column-gap:   0px;
     -moz-column-count:    3;
     -moz-column-gap:      0px;
     column-count:         3;
-    column-gap:           0px;  
+    column-gap:           0px;
+    overflow: visible;
 }
 
-div.collage-wrapper img{
-    position:relative;
-    width: 100%;
-    height: auto;
+.collage-wrapper img {
+    width: 100% !important;
+    height: auto !important;
     -webkit-transition: all 1s ease; /* Safari and Chrome */
-  	-moz-transition: all 1s ease; /* Firefox */
-  	-o-transition: all 1s ease; /* IE 9 */
-  	-ms-transition: all 1s ease; /* Opera */
-  	transition: all 1s ease;
+    -moz-transition: all 1s ease; /* Firefox */
+    -o-transition: all 1s ease; /* IE 9 */
+    -ms-transition: all 1s ease; /* Opera */
+    transition: all 1s ease;
+    overflow: visible;
 }
 
 div.collage-wrapper img:hover {
-    z-index: 1002;
-    -webkit-transform:scale(1.5); /* Safari and Chrome */
+    z-index: 1005;
+    overflow: visible;
+    position: relative;
+    -webkit-transform: scale(1.5) translate3D(0,0,0);
     -moz-transform:scale(1.5); /* Firefox */
     -ms-transform:scale(1.5); /* IE 9 */
     -o-transform:scale(1.5); /* Opera */
-    transform:scale(1.5);
+    transform: scale(1.5) translate3D(0,0,0);
+    overflow: visible;
 }

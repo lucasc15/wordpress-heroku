@@ -35,7 +35,7 @@ function front_end_css_js() {
 add_action('wp_enqueue_scripts', 'front_end_css_js');
 add_shortcode('make-collage', 'make_collage_handler');
 
-function make_collage_handler($atts = [], $content=null, $tags=' '){
+function make_collage_handler($atts = [], $content=null, $tags=''){
     $atts = array_change_key_case((array)$atts, CASE_LOWER);
     $wp_atts = shortcode_atts([
                                     'tags' => 'all',
@@ -60,13 +60,14 @@ function init_db(){
     global $wpdb;
     $charset_collate = $wpdb -> get_charset_collate(); 
 
-    $table_picture = $wpdp->prefix."pictures"; 
-    $table_tags = $wpdp->prefix."tags"; 
-    $table_picturetag = $wpdp->prefix."picturetag"; 
+    $table_picture = $wpdb->prefix."pictures"; 
+    $table_tags = $wpdb->prefix."tags"; 
+    $table_picturetag = $wpdb->prefix."picturetag"; 
 
     $sql_pictures = "CREATE TABLE $table_picture ( 
         id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, 
-        p_url varchar(200) NOT NULL, 
+        p_url varchar(200) NOT NULL,
+        p_name varchar(100) NOT NULL,
         caption text 
     ) $charset_collate;";
 
