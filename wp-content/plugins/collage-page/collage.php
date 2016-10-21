@@ -143,13 +143,12 @@ function insert_image_tag($url, $json_tags, $caption){
 		$exists = $wpdb->get_results("SELECT 1 FROM $table_picturetag WHERE picture_id = $p_id AND tag_id = $tag_id");
 		if (sizeof($exists) == 0){
         	$wpdb->query("INSERT INTO $table_picturetag (picture_id, tag_id) VALUES ($p_id, $tag_id)");
-			echo $wpdb->last_query;
 		}
     }
     global $table_pictures;
     $sql_caption = "UPDATE $table_pictures SET caption = '$caption' WHERE p_url = '$url'";
     $wpdb->query($sql_caption);
-    /*wp_redirect(admin_url('admin.php?page=collage-maker'));*/
+    wp_redirect(admin_url('admin.php?page=collage-maker'));
 }
 
 function search_tags($tags){
@@ -157,16 +156,16 @@ function search_tags($tags){
     global $table_pictures;
     global $table_tags;
     global $table_picturetag;
-    
     if ($tags == 'all' Or $tags == ''){
         $sql = "SELECT p_url FROM $table_pictures;";
     } else {
         $sql = "SELECT p_url FROM $table_pictures INNER JOIN
                 $table_picturetag ON $table_pictures.id = $table_picturetag.picture_id
                 INNER JOIN $table_tags ON $table_tags.id = $table_picturetag.tag_id
-                WHERE $table_tags.tag_name IN (".implode(',', $tags). ");";
+                WHERE $table_tags.tag_name = '$tags'";
     }
     $p_urls = $wpdb->get_results($sql);
+	echo $wpdb->last_query;
     return $p_urls;
 }
 

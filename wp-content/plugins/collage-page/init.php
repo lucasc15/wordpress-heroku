@@ -35,13 +35,12 @@ function front_end_css_js() {
 add_action('wp_enqueue_scripts', 'front_end_css_js');
 add_shortcode('make-collage', 'make_collage_handler');
 
-function make_collage_handler($atts = [], $content=null, $tags=''){
+function make_collage_handler($atts = [], $content=null, $tag=''){
     $atts = array_change_key_case((array)$atts, CASE_LOWER);
     $wp_atts = shortcode_atts([
-                                    'tags' => 'all',
+                                    'tag' => 'all',
                                  ], $atts, $tag);
-    echo $wp_att['tags'];
-    $p_urls = search_tags($wp_att['tags']);
+    $p_urls = search_tags($wp_atts['tag']);
     make_collage($p_urls);
 }
 
