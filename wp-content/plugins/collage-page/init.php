@@ -69,18 +69,18 @@ function init_db(){
         p_url varchar(200) NOT NULL,
         p_name varchar(100) NOT NULL,
         caption text 
-    ) $charset_collate;";
+    )";
 
     $sql_tags = "CREATE TABLE $table_tags (
         id SERIAL PRIMARY KEY,
         tag_name varchar(55) NOT NULL
-    ) $charset_collate;";
+    )";
 
     $sql_picturetag = "CREATE TABLE $table_picturetag (
         id SERIAL PRIMARY KEY,
         tag_id INTEGER NOT NULL, 
         picture_id INTEGER NOT NULL
-    ) $charset_collate;";
+    )";
 
 
     require_once( ABSPATH . 'wp-admin/includes/upgrade.php');
