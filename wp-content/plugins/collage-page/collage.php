@@ -33,8 +33,8 @@ function refresh_cloudinary_urls() {
     $table_name = $wpdb->prefix."pictures";
     foreach($urls as $url){
         $tmp = end(explode('/', $url));
-		$exists = $wpdb->query("SELECT 1 FROM $table_pictures WHERE p_name = '$tmp'");
-		if (!$exists){
+		$exists = $wpdb->get_results("SELECT id FROM $table_pictures WHERE p_name = '$tmp'");
+		if (sizeof($exists) == 0){
         	$sql = "INSERT INTO $table_name (p_url, p_name) VALUES ('$url', '$tmp')";
         	$wpdb->query($sql);
 		}
@@ -165,7 +165,6 @@ function search_tags($tags){
                 WHERE $table_tags.tag_name = '$tags'";
     }
     $p_urls = $wpdb->get_results($sql);
-	echo $wpdb->last_query;
     return $p_urls;
 }
 
