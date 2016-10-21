@@ -35,7 +35,7 @@ function refresh_cloudinary_urls() {
         $tmp = end(explode('/', $url));
         $sql = "INSERT INTO $table_name (p_url, p_name) SELECT '$url', '$tmp' WHERE NOT EXISTS (SELECT 1 FROM $table_name WHERE p_name='$tmp');";
         $wpdb->query($sql);
-        echo $wpdp->last_query;
+        echo $wpdb->last_query;
     }
     remove_deleted_images();
     delete_duplicate_p_urls();
