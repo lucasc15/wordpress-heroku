@@ -33,7 +33,7 @@ function refresh_cloudinary_urls() {
     $table_name = $wpdb->prefix."pictures";
     foreach($urls as $url){
         $tmp = end(explode('/', $url));
-        $sql = "INSERT INTO $table_name (p_url, p_name) (SELECT '$url', '$tmp' WHERE NOT EXISTS (SELECT 1 FROM $table_name WHERE p_name='$tmp'))";
+        $sql = "INSERT INTO $table_name (p_url, p_name) VALUES (SELECT '$url', '$tmp' WHERE NOT EXISTS (SELECT 1 FROM $table_name WHERE p_name='$tmp'))";
         $wpdb->query($sql);
         echo $wpdb->last_query."<br/>";
         echo $wpdb->last_error."<br/>";
