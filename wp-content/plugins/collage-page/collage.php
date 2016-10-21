@@ -34,7 +34,7 @@ function refresh_cloudinary_urls() {
     foreach($urls as $url){
         $tmp = end(explode('/', $url));
         $sql = "INSERT INTO $table_name (p_url, p_name) SELECT '$url', '$tmp' WHERE NOT EXISTS (SELECT 1 FROM $table_name WHERE p_name='$tmp')";
-        $wpdb->query($sql);
+        $wpdb->get_results($sql);
         echo $wpdb->last_query;
         echo $wpdb->last_error;
     }
