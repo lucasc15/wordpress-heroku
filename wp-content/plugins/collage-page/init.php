@@ -65,19 +65,19 @@ function init_db(){
     $table_picturetag = $wpdb->prefix."picturetag"; 
 
     $sql_pictures = "CREATE TABLE $table_picture ( 
-        id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, 
+        id SERIAL PRIMARY KEY,
         p_url varchar(200) NOT NULL,
         p_name varchar(100) NOT NULL,
         caption text 
     ) $charset_collate;";
 
     $sql_tags = "CREATE TABLE $table_tags (
-        id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+        id SERIAL PRIMARY KEY,
         tag_name varchar(55) NOT NULL
     ) $charset_collate;";
 
     $sql_picturetag = "CREATE TABLE $table_picturetag (
-        id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+        id SERIAL PRIMARY KEY,
         tag_id INTEGER NOT NULL, 
         picture_id INTEGER NOT NULL
     ) $charset_collate;";
