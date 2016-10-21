@@ -38,8 +38,6 @@ function refresh_cloudinary_urls() {
         	$sql = "INSERT INTO $table_name (p_url, p_name) VALUES ('$url', '$tmp')";
         	$wpdb->query($sql);
 		}
-        echo $wpdb->last_query."<br/>";
-        echo $wpdb->last_error."<br/>";
     }
     remove_deleted_images();
     delete_duplicate_p_urls();

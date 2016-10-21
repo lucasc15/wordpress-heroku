@@ -18,7 +18,7 @@ admin_image_popup = function (a_tag) {
     close.onclick = function () {admin_close_popup();};
     // Input form
     input_form = document.createElement("form");
-    input_form.action = action="http://localhost:8000/wp-admin/admin-post.php";
+    input_form.action = action="/wp-admin/admin-post.php";
     input_form.method = "POST";
     input_form.enctype = "application/x-www-form-urlencoded"
     
