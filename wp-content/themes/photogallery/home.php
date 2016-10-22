@@ -16,16 +16,16 @@ get_header(); ?>
 		<div class="table-wrapper">
 			<div class="row">
                 <div class="col" style="visibility:hidden;">/</div>
-                <div class="col"><a href="italy/"><img style="max-height:100; width:100%;" src="http://res.cloudinary.com/drfb5ts4d/image/upload/v1477139119/wp-media/wx8y1syn2fsxcor6j8or.jpg" alt="Itlay" /></a></div>
+                <div class="col"><a href="italy/"><img src="http://res.cloudinary.com/drfb5ts4d/image/upload/v1477139119/wp-media/wx8y1syn2fsxcor6j8or.jpg" alt="Itlay" /></a></div>
 				<div class="col"></div>
             </div>
             <div class="row">
                 <div class="col">
-					<a href="rome/"><img style="max-height:100; width:100%;" src="http://res.cloudinary.com/drfb5ts4d/image/upload/v1476390498/wp-media/dlivzbudpjtwv1ktbkcl.jpg" alt="Rome" /></a>
+					<a href="rome/"><img src="http://res.cloudinary.com/drfb5ts4d/image/upload/v1476390498/wp-media/dlivzbudpjtwv1ktbkcl.jpg" alt="Rome" /></a>
 				</div>
                 <div class="col"><h1>ITALY</h1></div>
                 <div class="col">
-					<a href="rome/"><img style="max-height:100%; width:100%;" src="http://res.cloudinary.com/drfb5ts4d/image/upload/v1476390739/wp-media/ddyi1c1fxjbsnmwnbu4x.jpg" alt="Merano" /></a>
+					<a href="rome/"><img src="http://res.cloudinary.com/drfb5ts4d/image/upload/v1476390739/wp-media/ddyi1c1fxjbsnmwnbu4x.jpg" alt="Merano" /></a>
 				</div>
             </div>
             <div class="row">

@@ -119,31 +119,36 @@ h2.site-description {
 	margin: 2%;
 	vertical-align: middle;
 	text-align: center;
-	display: table-cell;
+	display: table;
 	align-items: stretch;
+	margin: 3% 12.5%;
+	overflow: visible;
 }
 .row{
-    height: 33%;
+    height: 25vh;
     width: 100%;
     vertical-align: middle;
     text-align: center;
+	overflow: visible;
 	clear:both;
 }
 
 .col{
 	top: -50%;
+	height: 100%;
 	display: inline-block;
     float:left;
-    width: 33%;
+    width: 25%;
     min-height: 100%;
     vertical-align: middle;
     display: table-cell;
     text-align: center;
+	overflow: visible;
 }
 
 .col img {
     width: 100% !important;
-    height: auto !important;
+	max-height: 100%;
 	z-index: 1001;
     -webkit-transition: all 1s ease; /* Safari and Chrome */
     -moz-transition: all 1s ease; /* Firefox */
