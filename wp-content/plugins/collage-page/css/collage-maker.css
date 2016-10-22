@@ -1,3 +1,10 @@
+.collage{
+	align-content: center;
+	align-items: center;
+	width: 90%;
+	margin: 0 5% 0 5%;
+	position: absolute;
+}
 .collage-wrapper {
     line-height: 0;
     -webkit-column-count: 3;

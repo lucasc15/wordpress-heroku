@@ -10,17 +10,21 @@
 
 @import url("../twentytwelve/style.css");
 
-html, body {
+html {
     width: 100%;
-    margin: 0 .5% 0 .1%;
-    height: 100%;
-    
+	background-color: #DCDCDC;
 }
+
+body {
+    width: 90%;
+	margin: 0 5% 0 5%;
+}
+
 .site, .hfeed{
     width: 100%;
     margin: 0;
     padding: 0;
-    height: 100%;
+    min-height: 100%;
 }
 
 #page{
@@ -28,7 +32,14 @@ html, body {
     padding: 0;
     border: 3px solid #262228;
     max-width: 100%;
-    height: 100%;
+	min-height: 100vh;
+	position: relative;
+	background-color: #D3D3D3;
+	overflow: visible;
+}
+
+.hidden-text{
+	color: #D3D3D3;
 }
 
 header{
@@ -38,19 +49,29 @@ header{
 
 #main{
     width: 100%;
-    padding: 10px 10px;
     margin-bottom: 5%;
     height: 100%;
-    background-color: #999;
+	position: absolute
+	overflow: auto;
 }
 
 #colophon, .push{
     height: 5%;
+	width: 90%;
+	bottom: 0;
+	position: fixed;
     border-top: 3px solid #262228;
+	background-color: #007849; 
 }
 
-h1, h2{
+h1 {
     margin 0 10px;
+    color: #FFCE00;
+    font-size: 350%;
+}
+
+h2 {
+	margin 0 10px;
     color: #FFCE00;
     font-size: 200%;
 }
@@ -99,18 +120,69 @@ h2.site-description {
     margin: 0 2%;
 }
 
+.table-wrapper{
+	width: 100%;
+	min-height: 100%;
+	margin: 2%;
+	vertical-align: middle;
+	text-align: center;
+	display: table-cell;
+	align-items: stretch;
+}
 .row{
     height: 33%;
     width: 100%;
     vertical-align: middle;
     text-align: center;
+	clear:both;
 }
 
 .col{
+	top: -50%;
+	display: inline-block;
     float:left;
     width: 33%;
-    height: 100%;
+    min-height: 100%;
     vertical-align: middle;
     display: table-cell;
     text-align: center;
+}
+
+.col img {
+    width: 100% !important;
+    height: auto !important;
+	z-index: 1001;
+    -webkit-transition: all 1s ease; /* Safari and Chrome */
+    -moz-transition: all 1s ease; /* Firefox */
+    -o-transition: all 1s ease; /* IE 9 */
+    -ms-transition: all 1s ease; /* Opera */
+    transition: all 1s ease;
+    overflow: visible;
+}
+
+.col img:hover {
+    z-index: 1005;
+    overflow: visible;
+    position: relative;
+    -webkit-transform: scale(1.5) translate3D(0,0,0);
+    -moz-transform:scale(1.5); /* Firefox */
+    -ms-transform:scale(1.5); /* IE 9 */
+    -o-transform:scale(1.5); /* Opera */
+    transform: scale(1.5) translate3D(0,0,0);
+    overflow: visible;
+}
+
+#primary{
+	width: 100%;
+	height: 100%;
+}
+
+#content{
+	width: 100%;
+	height: 100%;
+}
+
+article{
+	width: 100%;
+	height 100%;
 }

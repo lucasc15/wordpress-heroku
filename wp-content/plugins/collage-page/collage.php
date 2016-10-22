@@ -169,6 +169,7 @@ function search_tags($tags){
 }
 
 function make_collage($p_urls){
+	echo '<div class=collage>';
     echo '<div class="collage-wrapper">';
     foreach($p_urls as $p_url){
         echo '<div>';
@@ -176,6 +177,7 @@ function make_collage($p_urls){
         echo '</div>';
     }
     echo '</div>';
+	echo '</div>';
 }
 
 function upload_image() {

@@ -23,5 +23,4 @@ get_header(); ?>
 
 		</div><!-- #content -->
 	</div><!-- #primary -->
-<div class="push"></div>
 <?php get_footer(); ?>
